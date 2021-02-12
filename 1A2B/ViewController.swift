@@ -48,6 +48,7 @@ class ViewController: UIViewController {
         createPotic()
         //出現答案
         createAnswer()
+    
        
     }
     //確定按鈕
@@ -70,6 +71,7 @@ class ViewController: UIViewController {
                 
                 if a == 4{
                     decideButton.alpha = 0
+                    enterNumber.endEditing(true) //收鍵盤
                 }
                 
             }
@@ -77,6 +79,7 @@ class ViewController: UIViewController {
             wrongAnswerArray.append(historyNumber)
             a = 0
             b = 0
+            enterNumber.text = ""
         }
         //歷史紀錄區
         record.text = ""
@@ -84,12 +87,17 @@ class ViewController: UIViewController {
                     record.text = record.text! + number + "\n"
                     
                 }
-         
-        
-        
-            
-        
+   
     }
-    
+    //再一次
+    @IBAction func again(_ sender: UIButton) {
+        a = 0
+        b = 0
+        record.text = ""
+        wrongAnswerArray = [String]()
+        createAnswer() //創造答案
+        playingButtonView.alpha = 1 //出現開始按鈕
+        decideButton.alpha = 0 //隱藏確定按鈕
+    }
 }
 
